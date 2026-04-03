@@ -4,7 +4,8 @@ wire:
 
 .PHONY: dev
 dev:
-	go run main.go
+	go build -o bin/quotes-api main.go
+	./bin/quotes-api
 
 .PHONY: build
 build: wire
