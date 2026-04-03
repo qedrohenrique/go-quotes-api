@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(go get:*)",
+      "Bash(go build:*)",
+      "WebFetch(domain:github.com)",
+      "Bash(go install:*)",
+      "Bash(wire ./...)",
+      "Bash(go generate:*)",
+      "Bash(go run:*)"
+    ]
+  }
+}
