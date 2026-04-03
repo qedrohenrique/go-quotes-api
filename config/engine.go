@@ -5,6 +5,7 @@ import (
 	"strings"
 
 	"brazilian-api-quotes/handler"
+
 	"github.com/gin-gonic/gin"
 )
 

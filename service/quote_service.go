@@ -21,3 +21,21 @@ func (s *QuoteService) GetQuotes() ([]repository.Quote, error) {
 
 	return quotes, nil
 }
+
+func (s *QuoteService) GetPaginatedQuotes(page int, pageSize int) ([]repository.Quote, error) {
+
+	if page < 1 {
+		page = 1
+	}
+
+	if pageSize < 1 {
+		pageSize = 10
+	}
+
+	quotes, err := s.repo.GetPaginatedQuotes(page, pageSize)
+	if err != nil {
+		return quotes, err
+	}
+
+	return quotes, nil
+}

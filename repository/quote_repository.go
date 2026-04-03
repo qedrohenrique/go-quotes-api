@@ -40,3 +40,24 @@ func (r *QuoteRepository) GetQuotes() ([]Quote, error) {
 
 	return quotes, nil
 }
+
+func (r *QuoteRepository) GetPaginatedQuotes(page int, pageSize int) ([]Quote, error) {
+	quotes := []Quote{}
+
+	rows, err := r.db.Query(context.Background(), "SELECT * FROM quotes LIMIT $1 OFFSET $2;", pageSize, (page-1)*pageSize)
+	if err != nil {
+		return quotes, err
+	}
+	defer rows.Close()
+
+	for rows.Next() {
+		var quote Quote
+		err := rows.Scan(&quote.ID, &quote.Quote, &quote.Source)
+		if err != nil {
+			return quotes, err
+		}
+		quotes = append(quotes, quote)
+	}
+
+	return quotes, nil
+}
