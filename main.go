@@ -4,16 +4,13 @@ import (
 	"brazilian-api-quotes/config"
 	"brazilian-api-quotes/di"
 	"brazilian-api-quotes/handler"
-	"log"
 	"os"
 
 	"github.com/joho/godotenv"
 )
 
 func main() {
-	if err := godotenv.Load(); err != nil {
-		log.Fatal("Error loading .env file")
-	}
+	_ = godotenv.Load()
 
 	dbPool := config.LoadDatabase()
 	defer dbPool.Close()
