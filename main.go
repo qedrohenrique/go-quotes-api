@@ -5,6 +5,7 @@ import (
 	"brazilian-api-quotes/di"
 	"brazilian-api-quotes/handler"
 	"log"
+	"os"
 
 	"github.com/joho/godotenv"
 )
@@ -21,5 +22,5 @@ func main() {
 	h := handler.NewQuoteHandler(svc)
 	engine := config.LoadEngine(h)
 
-	engine.Run(":8080")
+	engine.Run(":" + os.Getenv("PORT"))
 }
